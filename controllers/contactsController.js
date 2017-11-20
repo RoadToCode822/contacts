@@ -1,3 +1,8 @@
+const bodyParser = require('body-parser');
+const path = require('path');
+
+
+
 var data = [
   {
     name: "John Doe",
@@ -17,8 +22,27 @@ var data = [
 ]
 
 module.exports = function(app){
+  
   app.get('/contacts', function(req, res){
     res.render('contacts', {contacts: data});
+  });
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
+  
+  app.post('/contacts/addNew', function(req, res){
+    
+    
+
+    res.setHeader('Content-Type', 'application/json');
+    
+    var name = req.body.name;
+    var phone = req.body.phone;
+    var address = req.body.address;
+    
+    console.log(name);
+
+    res.send('Success');
+
   });
 
   app.post('/contacts', function(req, res){

@@ -1,5 +1,5 @@
-var express = require('express');
-var contactsController = require('./controllers/contactsController');
+const express = require('express');
+const contactsController = require('./controllers/contactsController');
 
 
 var app = express();
