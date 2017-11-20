@@ -1,10 +1,8 @@
 <html>
   <head>
     <title>Contacts List</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-    <link href="/assets/styles.css" rel="stylesheet" type="text/css" /> 
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+    <script src="/assets/contact-list.js"></script> 
   </head>
 
   <body>
@@ -12,41 +10,43 @@
     <hr>  
     <div id="add-contacts">
     <h2> Add Contacts</h2>
-      <form>
+      <form action="/contacts/addNew" method="POST">
         <label>Name</label> </br>
         <input type="text" name="item"></br>
         <label>Phone</label></br>
         <input type="text" name="item"></br>
         <label>Address</label></br>
         <input type="text" name="item">
+        <input value="Save" type="submit"/>
       </form>
     </div>
     <hr>
     <div id="show-contacts">
       
       <ul>
-        <li>
-          <div>
-            <h3>Name: John Doe</h3>
-            <h4>Phone Number: 416 909 2322
-            <p>Address: </p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Name: John Doe</h3>
-            <h4>Phone Number: 416 909 2322
-            <p>Address: </p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Name: John Doe</h3>
-            <h4>Phone Number: 416 909 2322
-            <p>Address: </p>
-          </div>
-        </li>
+        <% for(var i = 0; i < contacts.length; i++) { %>
+          <li><%= contacts[i].name %></li>
+        
+          <li><%= contacts[i].phone %></li>
+       
+          <li><%= contacts[i].address %></li>
+          <li>-----------------------------</li>
+        <% } %>
       </ul>
+
+      <!--       <ul>
+        <% for(var i = 0; i < contacts.length; i++) { %>
+          <li><%= contacts[i].name %></li>
+        <% } %>
+
+        <% for(var i = 0; i < contacts.length; i++) { %>
+          <li><%= contacts[i].phone %></li>
+        <% } %>
+
+        <% for(var i = 0; i < contacts.length; i++) { %>
+          <li><%= contacts[i].address %></li>
+        <% } %>
+      </ul> -->
       
     </div>
   </body>
